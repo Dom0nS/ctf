@@ -22,34 +22,7 @@ app.get('/ssrf', (req, res) => {
         else {
             const url = `http://localhost:${private1Port}${normalizedPath}`
             const parsedUrl = new URL(url)
-    
-            if (parsedUrl.hostname !== 'localhost') {
-                // Is it even possible to get in here???
-                res.send('sorry, you can only talk to localhost')
-            }
-            else {
-                // Make the request and return its content as our content.
-                http.get(parsedUrl.href, ssrfRes => {
-                    let contentType = ssrfRes.headers['content-type']
-
-                    let body = ''
-                    ssrfRes.on('data', chunk => {
-                        body += chunk
-                    })
-
-                    ssrfRes.on('end', () => {
-                        if (contentType) {
-                            res.setHeader('Content-Type', contentType)
-                        }
-                        res.send(body)
-                    })
-                }).on('error', function(e) {
-                    res.send("Got error: " + e.message)
-                })
-            }
-        }
-    }
-})
+...
 ```
 The only difference is that there is a check for the first character of the path parameter which cannot be a number. We can easily bypass this poor validation attempt.
 
