@@ -145,7 +145,7 @@ It turned out that in the github repo there is test folder with all the tests pe
     }
 ...
 ```
-I was right, here it is! We can use {~flag} to get the flag content
+I was right, here it is! We can use `{~flag}` to get the flag content
 
 ![image](https://user-images.githubusercontent.com/74207547/160663069-cfa55303-5ef1-41ec-b6cd-bbd40fbea105.png)
 
