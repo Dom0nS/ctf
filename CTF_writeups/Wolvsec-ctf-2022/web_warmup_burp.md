@@ -4,7 +4,7 @@
 
 ```As the name of the chall suggests Burp Suite will be a good tool to use```
 
-## Web:
+## Website:
 
 ![image](https://user-images.githubusercontent.com/74207547/160460095-67d55ff5-ea8c-47ff-aa14-d5f40996dd06.png)
 
