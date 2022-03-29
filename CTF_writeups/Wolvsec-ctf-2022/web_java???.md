@@ -12,7 +12,7 @@
 
 Simple web application that prints user input. When it comes to SSTI I always try this payload `${{<%[%'"}}%\.` from [cobalt article](https://cobalt.io/blog/a-pentesters-guide-to-server-side-template-injection-ssti), but the site didn't behave differently. At this point I know it's not going to be typical SSTI challenge
 
-## Source Code Review
+## Source code review
 
 >## ChallengeApp.java
 
