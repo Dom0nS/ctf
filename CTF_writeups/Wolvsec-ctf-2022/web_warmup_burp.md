@@ -1,4 +1,4 @@
-# Warmup: Burp 
+# Web: Warmup Burp 
 
 ![image](https://user-images.githubusercontent.com/74207547/160458728-76f0b409-83fc-486e-a5f4-28228eaa4e61.png)
 
