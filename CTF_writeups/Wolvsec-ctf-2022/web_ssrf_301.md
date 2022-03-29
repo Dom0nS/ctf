@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/74207547/160584776-1310eb04-8e10-4fd1-a0b2-c3a69b078f19.png)
 
-It's a harder version of [SSRF 101](ctf/CTF_writeups/Wolvsec-ctf-2022/web_ssrf_101.md)
+It's a harder version of [SSRF 101](./web_ssrf_101.md)
 
 ## Differences in source code
 
