@@ -1,6 +1,6 @@
 # Web: SSRF 101
 
-![image](https://user-images.githubusercontent.com/74207547/160569580-ee6301b4-80d7-45ed-b049-a11f49b6a27f.png)
+![image](https://user-images.githubusercontent.com/74207547/160583998-d4882e9c-07f9-43a8-870d-3a732eb78781.png)
 
 We are given a source code
 
