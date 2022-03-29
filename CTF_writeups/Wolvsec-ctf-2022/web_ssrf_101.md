@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/74207547/160583998-d4882e9c-07f9-43a8-870d-3a732eb78781.png)
 
-We are given a source code
+We are given the source code
 
 ![image](https://user-images.githubusercontent.com/74207547/160570547-102b82f1-1b7b-41a0-912a-5213fb8b9617.png)
 
