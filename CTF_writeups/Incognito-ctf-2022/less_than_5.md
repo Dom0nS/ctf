@@ -98,7 +98,7 @@ Index.php got between the files and whole thing was messed up. I had to find rev
 
 # Solution:
 
-I created simple python script which creates all the files needed and calls `1.php` endpoint to check if it worked.
+Simple python script which creates all the files needed and calls `1.php` endpoint to check if it worked.
 
 ```python
 import requests 
