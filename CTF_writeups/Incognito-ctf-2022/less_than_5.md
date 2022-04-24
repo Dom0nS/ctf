@@ -54,7 +54,7 @@ The hardest part is executing `ls -t>0`. This line have much more than 5 chars s
 
 ![image](https://user-images.githubusercontent.com/74207547/164992694-919a57d3-18a9-4016-ae52-3b5fa4b8ce69.png)
 
-**That's black magic. What even is that?**
+**That's pure magic. Haow does it even work?**
 
 First we need to understand few commands:
 * dir - same as ls
