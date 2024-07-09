@@ -1,24 +1,24 @@
 # July XSS challenge - Intigriti 2024
 
-![image](https://github.com/Dom0nS/private/assets/74207547/a8ef61b4-4fa6-4136-b22b-d6af4c6a8967)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/e1b6cff4-587d-4a58-909a-f210b269c289)
 
 The challenge rules consist of the following:
 
-![image](https://github.com/Dom0nS/private/assets/74207547/7e661dcd-3860-4358-ba32-c935ff54ee57)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/a22dea26-f0ff-44e9-81e5-ce4b5b77eebb)
 
 ## What was this challenge about?
 
 The website was fairly simple. It featured a form through which HTML code could be injected, but JavaScript code execution was not allowed.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/28b0d342-aa37-4124-b52a-f93783b27988)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/004168b3-2d83-410a-97cf-b7f145154b88)
 
 The execution of the script was stopped by the CSP, and there was also a message about an undefined variable that would be useful later.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/4996b266-7db8-4e5b-a360-9c50052dde27)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/ebb73036-3f57-405d-8455-55cee57b8a64)
 
 Content Security Policy looked rather strict, important part was that `default-src` was set to `*`.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/b8a05882-31a9-47f8-ac06-305acae8f62b)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/db5b3487-c05b-4142-95c7-26ed1ca0a4a3)
 
 ## Closer look at the source code
 
@@ -96,7 +96,7 @@ From the console error earlier, I remembered that the `isDevelopment` variable w
 
 I inserted a special `<a>` tag into the form, which, when placed in the DOM, functioned as a valid variable.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/648f39de-45b4-4906-a862-47de3740b602)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/d8f1fdc7-7f17-40bb-81e5-de496e017f27)
 
 ## Step 2 - Relative Path Overwrite
 
@@ -119,19 +119,19 @@ Initially I spent a lot of time trying to cause an error in the sanitize functio
 
 After sitting on this for a while, it occurred to me that the application was using the DOMPurify library in the latest version at the time of this challenge. It was very unlikely that there would be an easy way to cause an error in a core function of such well-known library. I knew it had to be something else.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/7906f0d6-38a9-4299-9504-12f4e9098f28)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/74a94f25-7340-41d1-a08a-9850c93006d2)
 
 After several hours of trying, I felt like giving up. Deprived of hope, I started looking for other things that might trigger an error in the try block. I came up with an idea, what if the DOMPurify library didn't load successfully. In that case, calling a sanitize function that didn't exist would cause an error.
 
 I started playing around with the request path and after simply adding `/` to the end of the URL, I got the following error in the console.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/00797cd3-eefe-4d85-8346-6f2df9a48217)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/f688a437-2b7a-4ff2-9e41-51bb55b6960a)
 
 That was it! It turned out that website was vulnerable to RPO (Relative Path Overwrite - [link](https://support.detectify.com/support/solutions/articles/48001048955-relative-path-overwrite))
 
 The DOMPurify library was loaded using the relative path `<script src="./dompurify.js"></script>`, so after adding `/` at the end of the URL, the browser was unable to find it. Thankfully, server returned the challenge page regardless of the URL after the `/challenge/` fragment.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/b80151a5-8bea-4e30-9699-0e5e53c13d7c)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/265204c9-da18-4aaa-aacd-725f4f21abcd)
 
 ## Step 3 - Base tag is the way
 
@@ -158,7 +158,8 @@ As I was able to add HTML tags to the DOM, I was also able to use the `<base>` t
 
 After a quick test, my idea worked. Upon using the `<base>` tag, the browser attempted to load the script from the address I had specified.
 
-![image](https://github.com/Dom0nS/private/assets/74207547/c68f0265-6cca-4564-8b3f-01dea77f1739)
+![image](https://github.com/Dom0nS/ctf/assets/74207547/e6917233-1d56-45b4-8ec2-2516c9bcf293)
+
 
 Now all that remains is to host the file on the server and check if the JavaScript code will actually be executed.
 <br>
